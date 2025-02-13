@@ -1,4 +1,4 @@
-export function App() {
+function App() {
   return <p>App works!</p>
 }
 
