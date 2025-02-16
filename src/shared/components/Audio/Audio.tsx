@@ -8,10 +8,11 @@ interface Props {
 
 export function Audio({ url }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [playing, setPlaying] = useState(false)
+  const [canPlay, setCanPlay] = useState<boolean>(!!url)
 
   const handleAudioEnd = () => {
-    setIsPlaying(false)
+    setPlaying(false)
   }
 
   useEffect(() => {
@@ -26,23 +27,36 @@ export function Audio({ url }: Props) {
     }
   }, [])
 
+  useEffect(() => {
+    const audio = document.createElement('audio')
+    const format = url.split('.').pop()?.toLowerCase()
+
+    if (format) {
+      const canPlay = audio.canPlayType(`audio/${format}`)
+
+      setCanPlay(canPlay !== '')
+    }
+  }, [url])
+
   const handlePlay = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     if (audioRef.current) {
-      setIsPlaying(true)
+      setPlaying(true)
       audioRef.current.play()
     }
   }
 
   return (
-    <button className="audio-button" onClick={handlePlay}>
-      {isPlaying ? (
+    <button className="audio-button" disabled={!canPlay} onClick={handlePlay}>
+      {playing ? (
         <div className="audio-button__playing"></div>
       ) : (
         <div className="audio-button__play-button"></div>
       )}
-      <audio ref={audioRef} src={url} />
+      {canPlay && (
+        <audio ref={audioRef} src={url} onError={() => setCanPlay(false)} />
+      )}
     </button>
   )
 }
