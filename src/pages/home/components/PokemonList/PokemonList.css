@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: var(--gap);
   margin-top: var(--gap);
+  margin-bottom: var(--gap);
 }
 
 .pokemon-list__item {
