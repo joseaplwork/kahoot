@@ -26,6 +26,35 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Padding rules
+      'padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+        {
+          blankLine: 'any',
+          prev: ['const', 'let', 'var'],
+          next: ['const', 'let', 'var'],
+        },
+        { blankLine: 'always', prev: '*', next: 'return' },
+      ],
+
+      // TypeScript specific rules
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+
+      // General code quality rules
+      'no-console': ['warn'],
+      eqeqeq: ['error', 'always'],
+      'no-duplicate-imports': 'error',
+      'no-unused-expressions': 'error',
+      'no-return-await': 'error',
+      'prefer-const': 'error',
+      'arrow-body-style': ['error', 'as-needed'],
+      curly: ['error', 'all'],
     },
   },
 )
