@@ -1,22 +1,35 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router'
+import {
+  RouterProvider,
+  ScrollRestoration,
+  createBrowserRouter,
+} from 'react-router-dom'
 
 const HomePage = lazy(() => import('./pages/home/HomePage'))
+const PokemonDetailPage = lazy(
+  () => import('./pages/pokemon-detail/PokemonDetailPage'),
+)
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <Suspense>
+        <HomePage />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/pokemon/:id',
+    element: (
+      <Suspense>
+        <ScrollRestoration />
+        <PokemonDetailPage />
+      </Suspense>
+    ),
+  },
+])
 
 export function Routes() {
-  return (
-    <BrowserRouter>
-      <ReactRoutes>
-        <Route
-          path="/"
-          element={
-            <Suspense>
-              <HomePage />
-            </Suspense>
-          }
-        />
-        <Route path="/pokemon/:id" element={<div>Pokemon detail</div>} />
-      </ReactRoutes>
-    </BrowserRouter>
-  )
+  return <RouterProvider router={router} />
 }

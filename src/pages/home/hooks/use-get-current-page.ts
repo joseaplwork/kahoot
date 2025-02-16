@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router-dom'
 
 export const useGetCurrentPage = () => {
   const [params, setParams] = useSearchParams()
