@@ -10,10 +10,16 @@
 }
 
 .header-content {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
   align-items: center;
   max-width: var(--header-width);
   width: 100%;
   margin: 0 auto;
+}
+
+.header-content h3 {
+  margin: 18px 0;
+  grid-column: 2;
+  text-align: center;
 }

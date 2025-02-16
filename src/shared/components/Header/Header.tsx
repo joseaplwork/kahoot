@@ -1,11 +1,11 @@
+import { PropsWithChildren } from 'react'
+
 import './Header.css'
 
-export function Header() {
+export function Header({ children }: PropsWithChildren) {
   return (
     <header className="header">
-      <div className="header-content">
-        <h3>Pokemon</h3>
-      </div>
+      <div className="header-content">{children}</div>
     </header>
   )
 }
