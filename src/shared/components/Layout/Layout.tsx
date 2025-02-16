@@ -1,4 +1,9 @@
-import { BackButton, Background, Header } from '@/shared/components'
+import {
+  BackButton,
+  Background,
+  Header,
+  ThemeToggle,
+} from '@/shared/components'
 
 import './Layout.css'
 
@@ -14,6 +19,7 @@ export function Layout({ children, onNavigateBack }: Props) {
       <Header>
         {onNavigateBack && <BackButton onClick={onNavigateBack} />}
         <h3>Pokemon</h3>
+        <ThemeToggle />
       </Header>
       <div className="layout">{children}</div>
     </>

@@ -1,0 +1,9 @@
+.theme-toggle {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  appearance: none;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}

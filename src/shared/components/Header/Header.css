@@ -7,6 +7,7 @@
   z-index: 100;
   width: 100%;
   background-color: var(--header-bg);
+  transition: background-color 0.3s ease;
 }
 
 .header-content {
@@ -16,6 +17,7 @@
   max-width: var(--header-width);
   width: 100%;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .header-content h3 {

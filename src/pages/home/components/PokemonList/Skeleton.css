@@ -9,6 +9,14 @@
   margin-top: var(--skeleton-gap);
 }
 
+.light-mode .skeleton {
+  --skeleton-shine: rgba(122, 122, 122, 0.5);
+}
+
+.dark-mode .skeleton {
+  --skeleton-shine: rgba(180, 180, 180, 0.6);
+}
+
 @media (prefers-color-scheme: dark) {
   .skeleton {
     --skeleton-shine: rgba(180, 180, 180, 0.6);

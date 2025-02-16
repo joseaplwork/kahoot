@@ -1,8 +1,8 @@
 .card {
   --card-bg: rgba(255, 255, 255, 0.2);
+  --card-border-color: rgba(255, 255, 255, 0.3);
   --card-border-radius: 15px;
   --card-padding: 15px;
-  --card-border-color: rgba(255, 255, 255, 0.3);
 
   background: var(--card-bg);
   border-radius: var(--card-border-radius);
@@ -12,6 +12,19 @@
     0 3px 6px rgba(0, 0, 0, 0.23);
   border: 1px solid var(--card-border-color);
   backdrop-filter: blur(10px);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.light-mode .card {
+  --card-bg: rgba(255, 255, 255, 0.2);
+  --card-border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .card {
+  --card-bg: rgba(37, 37, 37, 0.2);
+  --card-border-color: rgba(16, 16, 16, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {

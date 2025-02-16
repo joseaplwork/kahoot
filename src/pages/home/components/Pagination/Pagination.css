@@ -1,10 +1,9 @@
 .pagination {
   --pagination-bg: var(--primary-color);
-  --pagination-button-bg: var(--secondary-color);
-  --pagination-button-active-bg: #ffffff;
   --pagination-button-size: 35px;
   --pagination-spacing: 5px;
   --pagination-box-shadow: rgba(222, 222, 222, 0.25);
+  --pagination-button-active-bg: #ffffff;
 
   display: flex;
   gap: var(--pagination-spacing);
@@ -18,6 +17,19 @@
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 10px 20px var(--pagination-box-shadow);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.dark-mode .pagination {
+  --pagination-button-active-bg: #424242;
+  --pagination-box-shadow: rgba(0, 0, 0, 0.25);
+}
+
+.light-mode .pagination {
+  --pagination-box-shadow: rgba(222, 222, 222, 0.25);
+  --pagination-button-active-bg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
