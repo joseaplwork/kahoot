@@ -21,7 +21,7 @@ export function Detail({ pokemon, error, loading }: Props) {
   if (loading) {
     return (
       <>
-        <ImageContainer />
+        <ImageContainer skeleton />
         <Skeleton />
       </>
     )

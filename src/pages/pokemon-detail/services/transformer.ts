@@ -15,8 +15,9 @@ export const transformer = (data: PokemonDTO): Pokemon | null => {
       data.sprites.other['home'].front_default ||
       data.sprites.other['official-artwork'].front_default ||
       data.sprites.other['dream_world'].front_default ||
-      data.sprites.front_default,
-    audio: data.cries.latest || data.cries.legacy,
+      data.sprites.front_default ||
+      null,
+    audio: data.cries.latest || data.cries.legacy || null,
     weight: data.weight,
     height: data.height,
     types: data.types.map(type => type.type.name),

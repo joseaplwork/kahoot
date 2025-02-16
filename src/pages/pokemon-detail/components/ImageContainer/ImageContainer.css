@@ -38,6 +38,12 @@
   object-fit: contain;
 }
 
+.image__empty {
+  height: 100%;
+  place-content: center;
+  text-align: center;
+}
+
 .image__skeleton::after {
   content: '';
   position: absolute;
