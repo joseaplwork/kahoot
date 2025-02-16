@@ -1,0 +1,17 @@
+.pokemon-detail-stats {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.pokemon-detail-stats__stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.pokemon-detail-stats__stat:last-child {
+  border-bottom: none;
+}

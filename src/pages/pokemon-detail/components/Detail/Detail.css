@@ -1,0 +1,11 @@
+.pokemon-detail__info {
+  position: relative;
+  top: -20px;
+  z-index: 10;
+}
+
+.pokemon-detail__name {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 40px;
+}

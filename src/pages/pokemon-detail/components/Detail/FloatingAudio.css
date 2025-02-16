@@ -1,0 +1,6 @@
+.pokemon-detail-floating-audio {
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  transform: scale(1.5);
+}
