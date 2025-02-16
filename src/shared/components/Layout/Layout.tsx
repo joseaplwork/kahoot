@@ -18,7 +18,7 @@ export function Layout({ children, onNavigateBack }: Props) {
       <Background />
       <Header>
         {onNavigateBack && <BackButton onClick={onNavigateBack} />}
-        <h3>Pokemon</h3>
+        <h3 className="layout-header-title">Pokemon</h3>
         <ThemeToggle />
       </Header>
       <div className="layout">{children}</div>

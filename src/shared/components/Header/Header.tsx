@@ -5,7 +5,7 @@ import './Header.css'
 export function Header({ children }: PropsWithChildren) {
   return (
     <header className="header">
-      <div className="header-content">{children}</div>
+      <div className="header__content">{children}</div>
     </header>
   )
 }
