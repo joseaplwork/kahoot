@@ -1,4 +1,4 @@
-.skeleton {
+.pokemon-list-skeleton {
   --skeleton-bg: var(--secondary-color);
   --skeleton-shine: rgba(122, 122, 122, 0.5);
   --skeleton-gap: 30px;
@@ -9,28 +9,28 @@
   margin-top: var(--skeleton-gap);
 }
 
-.light-mode .skeleton {
+.light-mode .pokemon-list-skeleton {
   --skeleton-shine: rgba(122, 122, 122, 0.5);
 }
 
-.dark-mode .skeleton {
+.dark-mode .pokemon-list-skeleton {
   --skeleton-shine: rgba(180, 180, 180, 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
-  .skeleton {
+  .pokemon-list-skeleton {
     --skeleton-shine: rgba(180, 180, 180, 0.6);
   }
 }
 
-.skeleton__item {
+.pokemon-list-skeleton__item {
   display: flex;
   align-items: center;
 }
 
-.skeleton__image,
-.skeleton__name,
-.skeleton__type {
+.pokemon-list-skeleton__image,
+.pokemon-list-skeleton__name,
+.pokemon-list-skeleton__type {
   background: var(--skeleton-bg);
   position: relative;
   overflow: hidden;
@@ -38,9 +38,9 @@
   will-change: opacity;
 }
 
-.skeleton__image::after,
-.skeleton__name::after,
-.skeleton__type::after {
+.pokemon-list-skeleton__image::after,
+.pokemon-list-skeleton__name::after,
+.pokemon-list-skeleton__type::after {
   content: '';
   position: absolute;
   top: 0;
@@ -58,26 +58,26 @@
   animation: shine 1.5s infinite;
 }
 
-.skeleton__image {
+.pokemon-list-skeleton__image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 20px;
 }
 
-.skeleton__info {
+.pokemon-list-skeleton__info {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
 }
 
-.skeleton__name {
+.pokemon-list-skeleton__name {
   width: 120px;
   height: 22px;
 }
 
-.skeleton__type {
+.pokemon-list-skeleton__type {
   width: 70px;
   height: 22px;
 }
