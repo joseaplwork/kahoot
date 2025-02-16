@@ -30,8 +30,8 @@ export function ThemeToggle() {
   return (
     <button onClick={toggleTheme} className="theme-toggle">
       <svg
-        width="20"
-        height="20"
+        width="25"
+        height="25"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
