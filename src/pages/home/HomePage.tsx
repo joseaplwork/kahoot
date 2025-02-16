@@ -22,6 +22,7 @@ function HomePage() {
         previous={pokemonList.previous}
         currentPage={currentPage}
         onPageChange={handlePageChange}
+        disabled={loading}
       />
     </Layout>
   )

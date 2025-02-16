@@ -1,5 +1,6 @@
 .pagination {
   --pagination-bg: var(--primary-color);
+  --pagination-button-bg: var(--secondary-color);
   --pagination-button-size: 35px;
   --pagination-spacing: 5px;
   --pagination-box-shadow: rgba(222, 222, 222, 0.25);

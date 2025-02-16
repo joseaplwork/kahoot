@@ -7,10 +7,16 @@ interface Props {
   next: string | null
   previous: string | null
   currentPage: number
+  disabled: boolean
   onPageChange: (page: number) => void
 }
 
-export function Pagination({ count, currentPage, onPageChange }: Props) {
+export function Pagination({
+  count,
+  currentPage,
+  onPageChange,
+  disabled,
+}: Props) {
   const totalPages = Math.ceil(count / ITEMS_PER_PAGE)
   const isFirstPage = currentPage === 1
   const isLastPage = currentPage === totalPages || totalPages === 0
@@ -47,7 +53,7 @@ export function Pagination({ count, currentPage, onPageChange }: Props) {
   return (
     <div className="pagination">
       <button
-        disabled={isFirstPage}
+        disabled={isFirstPage || disabled}
         onClick={() => onPageChange(currentPage - 1)}
         className="pagination__button"
       >
@@ -65,6 +71,7 @@ export function Pagination({ count, currentPage, onPageChange }: Props) {
         ) : (
           <button
             key={page}
+            disabled={disabled}
             onClick={() => onPageChange(page)}
             className={`pagination__button ${page === currentPage ? 'pagination__button--active' : ''}`}
           >
@@ -74,7 +81,7 @@ export function Pagination({ count, currentPage, onPageChange }: Props) {
       )}
 
       <button
-        disabled={isLastPage}
+        disabled={isLastPage || disabled}
         onClick={() => onPageChange(currentPage + 1)}
         className="pagination__button"
       >
