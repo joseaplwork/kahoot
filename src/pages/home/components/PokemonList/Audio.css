@@ -1,0 +1,68 @@
+.audio-button {
+  --audio-button-bg: var(--text-color);
+  --button-hover-bg: var(--secondary-color);
+  --audio-button-icon-color: var(--primary-color);
+  --audio-button-size: 40px;
+  --audio-button-bar-width: 4px;
+  --audio-button-animation-duration: 0.5s;
+
+  width: var(--audio-button-size);
+  height: var(--audio-button-size);
+  border-radius: 50%;
+  background-color: var(--audio-button-bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.audio-button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.audio-button__play-button {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent
+    var(--audio-button-icon-color);
+  margin-left: 3px;
+}
+
+.audio-button__playing {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.audio-button__playing::before,
+.audio-button__playing::after {
+  content: '';
+  width: var(--audio-button-bar-width);
+  height: 100%;
+  background-color: var(--audio-button-icon-color);
+  border-radius: calc(var(--audio-button-bar-width) / 2);
+  will-change: transform;
+  animation: sound-wave var(--audio-button-animation-duration) infinite
+    ease-in-out alternate;
+  transform-origin: bottom;
+}
+
+.audio-button__playing::after {
+  animation-delay: calc(var(--audio-button-animation-duration) * -0.4);
+}
+
+@keyframes sound-wave {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

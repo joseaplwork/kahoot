@@ -1,0 +1,81 @@
+.skeleton {
+  --skeleton-bg: var(--secondary-color);
+  --skeleton-shine: rgba(122, 122, 122, 0.5);
+  --skeleton-gap: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--skeleton-gap);
+  margin-top: var(--skeleton-gap);
+}
+
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    --skeleton-shine: rgba(180, 180, 180, 0.6);
+  }
+}
+
+.skeleton__item {
+  display: flex;
+  align-items: center;
+}
+
+.skeleton__image,
+.skeleton__name,
+.skeleton__type {
+  background: var(--skeleton-bg);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  will-change: opacity;
+}
+
+.skeleton__image::after,
+.skeleton__name::after,
+.skeleton__type::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-shine) 50%,
+    transparent 100%
+  );
+  will-change: transform;
+  transform: translateX(-100%);
+  animation: shine 1.5s infinite;
+}
+
+.skeleton__image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.skeleton__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.skeleton__name {
+  width: 120px;
+  height: 22px;
+}
+
+.skeleton__type {
+  width: 70px;
+  height: 22px;
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}

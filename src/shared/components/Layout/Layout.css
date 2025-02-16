@@ -1,0 +1,12 @@
+.layout {
+  --layout-max-width: 500px;
+  --layout-spacing: 20px;
+
+  max-width: var(--layout-max-width);
+  width: 100%;
+  padding: 0 var(--layout-spacing);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}

@@ -1,0 +1,29 @@
+.pokemon-list {
+  --gap: 30px;
+  --spacing: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+
+.pokemon-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.pokemon-list__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pokemon-list__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pokemon-list__audio {
+  margin-right: var(--spacing);
+}

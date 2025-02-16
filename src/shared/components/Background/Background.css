@@ -1,0 +1,12 @@
+.background-image {
+  background-image: url('../../../assets/background.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: initial;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100lvw;
+  height: 100lvh;
+  z-index: -1;
+}

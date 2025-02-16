@@ -1,0 +1,19 @@
+.header {
+  --header-bg: var(--primary-color);
+  --header-width: var(--layout-max-width);
+
+  top: 0;
+  position: sticky;
+  z-index: 100;
+  width: 100%;
+  background-color: var(--header-bg);
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: var(--header-width);
+  width: 100%;
+  margin: 0 auto;
+}

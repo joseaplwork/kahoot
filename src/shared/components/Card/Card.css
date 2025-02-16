@@ -1,0 +1,22 @@
+.card {
+  --card-bg: rgba(255, 255, 255, 0.2);
+  --card-border-radius: 15px;
+  --card-padding: 15px;
+  --card-border-color: rgba(255, 255, 255, 0.3);
+
+  background: var(--card-bg);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  border: 1px solid var(--card-border-color);
+  backdrop-filter: blur(10px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    --card-bg: rgba(37, 37, 37, 0.2);
+    --card-border-color: rgba(16, 16, 16, 0.3);
+  }
+}
