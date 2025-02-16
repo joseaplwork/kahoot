@@ -1,10 +1,9 @@
 import { Link } from 'react-router'
 
-import { Card, ErrorViewState } from '@/shared/components'
+import { Audio, Card, ErrorViewState, PokemonNumber } from '@/shared/components'
 
 import { Pokemon } from '../../interfaces/pokemon-list'
 
-import { Audio } from './Audio'
 import { EmptyViewState } from './EmptyViewState'
 import { Skeleton } from './Skeleton'
 
@@ -40,7 +39,7 @@ export function PokemonList({ list, error, loading }: Props) {
               </div>
               <div className="pokemon-list__info">
                 <span className="pokemon-list__title">{pokemon.name}</span>
-                <span>N° {pokemon.id.toString().padStart(3, '0')}</span>
+                <PokemonNumber id={pokemon.id} />
               </div>
             </div>
           </Card>
