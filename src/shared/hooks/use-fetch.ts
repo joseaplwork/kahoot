@@ -16,11 +16,23 @@ export const useFetch = <F extends (data: Parameters<F>[0]) => ReturnType<F>>({
   useEffect(() => {
     setLoading(true)
 
-    fetch(endpoint)
+    const abortController = new AbortController()
+
+    fetch(endpoint, { signal: abortController.signal })
       .then(response => response.json())
       .then(data => setData(transformer(data)))
-      .catch(error => setError(error.message))
+      .catch(error => {
+        if (abortController.signal.aborted) {
+          return
+        }
+
+        setError(error.message)
+      })
       .finally(() => setLoading(false))
+
+    return () => {
+      abortController.abort()
+    }
   }, [endpoint, transformer])
 
   return { data, error, loading }
