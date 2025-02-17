@@ -1,12 +1,12 @@
 import './BackButton.css'
 
 interface Props {
-  onClick?: () => void
+  onClick: () => void
 }
 
 export function BackButton({ onClick }: Props) {
   const handleBack = () => {
-    onClick?.()
+    onClick()
   }
 
   return (
