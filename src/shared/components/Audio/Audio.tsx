@@ -30,9 +30,9 @@ export function Audio({ url }: Props) {
   return (
     <button className="audio-button" disabled={error} onClick={handlePlay}>
       {playing ? (
-        <div className="audio-button__playing"></div>
+        <div className="audio-button__playing" />
       ) : (
-        <div className="audio-button__play-button"></div>
+        <div className="audio-button__play-button" />
       )}
     </button>
   )

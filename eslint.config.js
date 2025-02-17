@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import unusedImports from 'eslint-plugin-unused-imports'
@@ -18,6 +19,12 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'unused-imports': unusedImports,
+      react: react,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -55,6 +62,23 @@ export default tseslint.config(
       'prefer-const': 'error',
       'arrow-body-style': ['error', 'as-needed'],
       curly: ['error', 'all'],
+
+      // React specific rules
+      'react/function-component-definition': [
+        'error',
+        {
+          namedComponents: 'function-declaration',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
+      'react/prop-types': 'off',
+      'react/jsx-pascal-case': 'error',
+      'react/jsx-no-useless-fragment': 'error',
+      'react/jsx-curly-brace-presence': ['error', 'never'],
+      'react/self-closing-comp': 'error',
+      'react/hook-use-state': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
 )
