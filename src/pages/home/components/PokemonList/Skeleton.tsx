@@ -4,7 +4,7 @@ import './Skeleton.css'
 
 export function Skeleton() {
   return (
-    <div className="pokemon-list-skeleton">
+    <div className="pokemon-list-skeleton" aria-label="loading pokemon list">
       {Array.from({ length: 7 }).map((_, index) => (
         <Card key={index}>
           <div className="pokemon-list-skeleton__item">

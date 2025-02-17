@@ -11,7 +11,7 @@ import { sort } from './sort'
 export const transformer = (
   dto: PokemonListDTO | null,
 ): PaginatedList<Pokemon> => {
-  if (!dto?.results) {
+  if (!dto || !dto?.results) {
     return {
       count: 0,
       next: null,
