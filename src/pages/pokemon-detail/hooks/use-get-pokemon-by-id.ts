@@ -4,8 +4,8 @@ import { url } from '@/shared/services'
 import { transformer } from '../services/transformer'
 
 export const useGetPokemonById = (id: string | undefined) => {
-  if (!id) {
-    throw new Error('ID is required')
+  if (!id || Number.isNaN(Number(id))) {
+    throw new Error('wrong ID passed in')
   }
 
   const { data, error, loading } = useFetch({
