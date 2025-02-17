@@ -1,17 +1,22 @@
 # Pokemon App
 
 A responsive and interactive web application to explore and learn about various
-Pokémon, built with React and deployed on GitHub Pages.  
-Visit the app: [live demo](https://joseaplwork.github.io/kahoot/)
+Pokémon, built with React and deployed on GitHub Pages.
 
 ## Table of Contents
 
+- [Demo](#demo)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Features](#features)
 - [Architecture](#architecture)
 - [Challenges](#challenges)
 - [Testing](#testing)
+
+## Demo
+
+You can see the live demo of the app here:  
+[https://joseaplwork.github.io/kahoot/](https://joseaplwork.github.io/kahoot/)
 
 ## Requirements
 
