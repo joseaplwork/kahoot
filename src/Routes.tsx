@@ -10,25 +10,30 @@ const PokemonDetailPage = lazy(
   () => import('./pages/pokemon-detail/PokemonDetailPage'),
 )
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: (
+        <Suspense>
+          <HomePage />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/pokemon/:id',
+      element: (
+        <Suspense>
+          <ScrollRestoration />
+          <PokemonDetailPage />
+        </Suspense>
+      ),
+    },
+  ],
   {
-    path: '/',
-    element: (
-      <Suspense>
-        <HomePage />
-      </Suspense>
-    ),
+    basename: import.meta.env.MODE === 'production' ? '/kahoot' : '/',
   },
-  {
-    path: '/pokemon/:id',
-    element: (
-      <Suspense>
-        <ScrollRestoration />
-        <PokemonDetailPage />
-      </Suspense>
-    ),
-  },
-])
+)
 
 export function Routes() {
   return <RouterProvider router={router} />
