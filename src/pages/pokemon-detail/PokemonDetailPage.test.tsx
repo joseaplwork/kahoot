@@ -3,15 +3,8 @@ import userEvent from '@testing-library/user-event'
 import { ReactNode } from 'react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
-import { useFetch } from '@/shared/hooks'
-
 import PokemonDetailPage from './PokemonDetailPage'
-
-jest.mock('@/shared/hooks', () => ({
-  useFetch: jest.fn(),
-}))
-
-const mockUseFetch = useFetch as jest.MockedFunction<typeof useFetch>
+import { PokemonDTO } from './interfaces/pokemon-dto'
 
 function renderWithRouter(ui: ReactNode, { route = '/' } = {}) {
   return render(
@@ -23,57 +16,106 @@ function renderWithRouter(ui: ReactNode, { route = '/' } = {}) {
   )
 }
 
+const mockPokemon: Partial<PokemonDTO> = {
+  id: 1,
+  name: 'bulbasaur',
+  height: 7,
+  weight: 69,
+  cries: {
+    latest: 'https://example.com/cry/1.ogg',
+    legacy: null,
+  },
+  sprites: {
+    front_default: null,
+    back_default: null,
+    front_female: null,
+    back_female: null,
+    front_shiny: null,
+    back_shiny: null,
+    front_shiny_female: null,
+    back_shiny_female: null,
+    other: {
+      home: {
+        front_default: 'https://example.com/home/1.png',
+        front_female: null,
+        front_shiny: null,
+        front_shiny_female: null,
+      },
+      'official-artwork': {
+        front_default: null,
+        front_shiny: null,
+      },
+      dream_world: {
+        front_default: null,
+        front_female: null,
+      },
+    },
+  },
+  types: [
+    {
+      slot: 1,
+      type: { name: 'grass', url: 'type/12/' },
+    },
+    {
+      slot: 2,
+      type: { name: 'poison', url: 'type/4/' },
+    },
+  ],
+  stats: [
+    {
+      base_stat: 45,
+      effort: 0,
+      stat: { name: 'hp', url: 'stat/1/' },
+    },
+    {
+      base_stat: 49,
+      effort: 0,
+      stat: { name: 'attack', url: 'stat/2/' },
+    },
+  ],
+}
+
 describe('PokemonDetailPage', () => {
-  it('renders loading state initially', () => {
-    mockUseFetch.mockReturnValue({
-      data: null,
-      error: null,
-      loading: true,
-    })
+  let fetchMock: jest.Mock
 
-    renderWithRouter(<PokemonDetailPage />, { route: '/pokemon/1' })
-
-    const skeletonLoaders = screen.getAllByLabelText('loading pokemon detail')
-
-    expect(skeletonLoaders.length).toBeGreaterThan(0)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    window.fetch = jest.fn()
+    fetchMock = window.fetch as jest.Mock
   })
 
-  it('renders error state when there is an error', () => {
-    mockUseFetch.mockReturnValue({
-      data: null,
-      error: 'Failed to fetch data',
-      loading: false,
+  it('renders loading state initially', async () => {
+    fetchMock.mockResolvedValue({
+      json: () => {
+        setTimeout(() => Promise.resolve(null), 1000)
+      },
     })
 
     renderWithRouter(<PokemonDetailPage />, { route: '/pokemon/1' })
 
-    expect(screen.getByText('Ops something went wrong')).toBeInTheDocument()
+    expect(
+      await screen.findByLabelText('loading pokemon detail'),
+    ).toBeInTheDocument()
   })
 
-  it('renders pokemon details when data is available', () => {
-    const mockPokemon = {
-      id: 1,
-      name: 'Bulbasaur',
-      image: 'bulbasaur.png',
-      height: 7,
-      weight: 69,
-      audio: 'bulbasaur.ogg',
-      types: ['grass', 'poison'],
-      stats: [
-        { name: 'hp', value: 45 },
-        { name: 'attack', value: 49 },
-      ],
-    }
+  it('renders error state when there is an error', async () => {
+    fetchMock.mockRejectedValue(new Error('Failed to fetch data'))
 
-    mockUseFetch.mockReturnValue({
-      data: mockPokemon,
-      error: null,
-      loading: false,
+    renderWithRouter(<PokemonDetailPage />, { route: '/pokemon/1' })
+
+    expect(
+      await screen.findByText('Ops something went wrong'),
+    ).toBeInTheDocument()
+  })
+
+  it('renders pokemon details when data is available', async () => {
+    fetchMock.mockResolvedValue({
+      json: () => Promise.resolve(mockPokemon),
     })
 
     renderWithRouter(<PokemonDetailPage />, { route: '/pokemon/1' })
 
-    expect(screen.getByText('Bulbasaur')).toBeInTheDocument()
+    expect(await screen.findByText('Bulbasaur')).toBeInTheDocument()
     expect(screen.getByText('Height:')).toBeInTheDocument()
     expect(screen.getByText('Weight:')).toBeInTheDocument()
     expect(screen.getByText('grass')).toBeInTheDocument()
@@ -93,10 +135,8 @@ describe('PokemonDetailPage', () => {
   it('navigates back when the back button is clicked', async () => {
     const user = userEvent.setup()
 
-    mockUseFetch.mockReturnValue({
-      data: null,
-      error: null,
-      loading: false,
+    fetchMock.mockResolvedValue({
+      json: () => Promise.resolve(mockPokemon),
     })
 
     render(
