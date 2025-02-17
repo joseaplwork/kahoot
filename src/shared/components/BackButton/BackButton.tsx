@@ -10,7 +10,7 @@ export function BackButton({ onClick }: Props) {
   }
 
   return (
-    <button onClick={handleBack} className="back-button">
+    <button aria-label="go back" onClick={handleBack} className="back-button">
       <svg
         width="25"
         height="25"

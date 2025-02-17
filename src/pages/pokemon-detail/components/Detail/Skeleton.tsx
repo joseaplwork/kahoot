@@ -4,7 +4,10 @@ import './Skeleton.css'
 
 export function Skeleton() {
   return (
-    <div className="pokemon-detail-skeleton">
+    <div
+      className="pokemon-detail-skeleton"
+      aria-label="loading pokemon detail"
+    >
       <Card>
         <div className="pokemon-detail-skeleton__audio" />
         <div className="pokemon-detail-skeleton__name" />

@@ -28,7 +28,12 @@ export function Audio({ url }: Props) {
   }
 
   return (
-    <button className="audio-button" disabled={error} onClick={handlePlay}>
+    <button
+      aria-label="play audio"
+      className="audio-button"
+      disabled={error}
+      onClick={handlePlay}
+    >
       {playing ? (
         <div className="audio-button__playing" />
       ) : (
